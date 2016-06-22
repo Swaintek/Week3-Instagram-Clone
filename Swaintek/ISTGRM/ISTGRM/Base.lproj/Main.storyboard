@@ -31,6 +31,11 @@
                         </constraints>
                     </view>
                     <toolbarItems>
+                        <barButtonItem title="Edit" id="9bR-X4-leb">
+                            <connections>
+                                <action selector="editButtonSelected:" destination="BYZ-38-t0r" id="eCP-NK-quX"/>
+                            </connections>
+                        </barButtonItem>
                         <barButtonItem style="plain" systemItem="flexibleSpace" id="TOH-uf-CIf"/>
                         <barButtonItem systemItem="add" id="3mX-d4-Ce8">
                             <connections>
@@ -38,10 +43,17 @@
                             </connections>
                         </barButtonItem>
                         <barButtonItem style="plain" systemItem="flexibleSpace" id="vXL-ga-8gQ"/>
+                        <barButtonItem title="Save" id="jzp-eh-GNR">
+                            <connections>
+                                <action selector="saveButtonSelected:" destination="BYZ-38-t0r" id="cfk-Cj-k6M"/>
+                            </connections>
+                        </barButtonItem>
                     </toolbarItems>
                     <navigationItem key="navigationItem" id="DdI-lK-Qud"/>
                     <connections>
+                        <outlet property="editButton" destination="9bR-X4-leb" id="hPZ-Uo-s4q"/>
                         <outlet property="imageView" destination="ETN-UQ-tBi" id="7iT-gT-omX"/>
+                        <outlet property="saveButton" destination="jzp-eh-GNR" id="4Rx-8I-6Kc"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>

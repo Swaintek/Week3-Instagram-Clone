@@ -8,12 +8,16 @@
 
 import UIKit
 
-class ImageViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate
+class ImageViewController: UIViewController, Setup, UIImagePickerControllerDelegate, UINavigationControllerDelegate
 {
     
     @IBOutlet weak var imageView: UIImageView!
     lazy var imagePicker = UIImagePickerController()
 
+    @IBOutlet weak var editButton: UIBarButtonItem!
+    
+    @IBOutlet weak var saveButton: UIBarButtonItem!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.setup()
@@ -27,7 +31,10 @@ class ImageViewController: UIViewController, UIImagePickerControllerDelegate, UI
     
     func setup()
     {
-        self.navigationItem.title = "ISTGRM"
+        self.navigationItem.title = "Dave's Picture Factory"
+
+        self.editButton.enabled = (self.imageView.image != nil)
+        self.saveButton.enabled = (self.imageView.image != nil)
     }
     
     func setupAppearance()
@@ -63,6 +70,7 @@ class ImageViewController: UIViewController, UIImagePickerControllerDelegate, UI
     
     @IBAction func addButtonSelected(sender: AnyObject)
     {
+        Filters.originalImg = nil
         if UIImagePickerController.isSourceTypeAvailable(.Camera) {
             self.presentActionsSheet()
         } else {
@@ -70,11 +78,75 @@ class ImageViewController: UIViewController, UIImagePickerControllerDelegate, UI
         }
     }
     
+    @IBAction func editButtonSelected(sender: AnyObject) {
+        guard let image = self.imageView.image else {return}
+        
+        let actionSheet = UIAlertController(title: "Filter", message: "Please select the filter type", preferredStyle: .ActionSheet)
+        let vintageAction = UIAlertAction(title: "Vintage", style: .Default) { (action) in
+            Filters.vintage(image, completion: { (img) in
+                self.imageView.image = img
+            })
+        }
+        
+        let comicAction = UIAlertAction(title: "Comic", style: .Default) { (action) in
+            Filters.comic(image, completion: { (img) in
+                self.imageView.image = img
+            })
+        }
+        
+        let bwAction = UIAlertAction(title: "Black & White", style: .Default) { (action) in
+            Filters.bw(image, completion: { (img) in
+                self.imageView.image = img
+            })
+        }
+        
+        let chromeAction = UIAlertAction(title: "Chrome", style: .Default) { (action) in
+            Filters.chrome(image, completion: { (img) in
+                self.imageView.image = img
+            })
+        }
+        
+        
+        
+        let cancelAction = UIAlertAction(title: "Cancel", style: .Cancel, handler: nil)
+        
+        actionSheet.addAction(comicAction)
+        actionSheet.addAction(chromeAction)
+        actionSheet.addAction(bwAction)
+        actionSheet.addAction(vintageAction)
+        actionSheet.addAction(cancelAction)
+        
+        presentViewController(actionSheet, animated: true, completion: nil)
+        
+    }
+    
+    
+    @IBAction func saveButtonSelected(sender: AnyObject) {
+        guard let img = self.imageView.image else { return }
+        
+        UIImageWriteToSavedPhotosAlbum(img, nil, nil, nil)
+        
+        API.shared.write(Post(image: img)) { (success) in
+            if success {
+                let alert = UIAlertController(title: "Image saved!", message: nil, preferredStyle: .Alert)
+                let excellent = UIAlertAction(title: "Excellent.", style: .Default, handler: { (action) in
+                    self.dismissViewControllerAnimated(true, completion: nil)
+                })
+                alert.addAction(excellent)
+                self.presentViewController(alert, animated: true, completion: nil)
+            }
+        }
+        
+    }
+    
+    
     //MARK: UIImagePickerControllerDelegate
     
     func imagePickerController(picker: UIImagePickerController, didFinishPickingImage image: UIImage, editingInfo: [String :AnyObject]?)
     {
         self.imageView.image = image
+        self.editButton.enabled = true
+        self.saveButton.enabled = true
         self.dismissViewControllerAnimated(true, completion: nil)
     }
     

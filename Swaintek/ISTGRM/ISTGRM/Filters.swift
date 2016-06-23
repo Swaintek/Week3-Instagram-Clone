@@ -11,6 +11,7 @@ import UIKit
 typealias FiltersCompletion = (theImage: UIImage?) -> ()
 
 class Filters {
+
     static let shared = Filters()
     
     static var originalImg = UIImage()
@@ -29,6 +30,8 @@ class Filters {
         
     private func filter(name: String, image: UIImage, completion: FiltersCompletion) {
         NSOperationQueue().addOperationWithBlock({
+            let image = image.normalizedImage()
+            
             guard let filter = CIFilter(name: name) else {fatalError("Check your spelling")}
             
             filter.setValue(CIImage(image: image), forKey: kCIInputImageKey)

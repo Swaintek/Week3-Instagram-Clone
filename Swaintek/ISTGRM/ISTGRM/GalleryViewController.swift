@@ -25,9 +25,14 @@ class GalleryViewController: UIViewController, UICollectionViewDataSource
         
         API.shared.GET{ (posts) in
             if let posts = posts {
+            spinner.stopAnimating()
             self.posts = posts
+            } else {
+            spinner.stopAnimating()
+            print("There were not posts")
             }
         }
+        
     }
     
     var posts = [Post]() {
@@ -43,6 +48,8 @@ class GalleryViewController: UIViewController, UICollectionViewDataSource
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.setupAppearance()
+        self.update()
         self.collectionView.dataSource = self
         self.collectionView.collectionViewLayout = GalleryCustomFlowLayout()
     }

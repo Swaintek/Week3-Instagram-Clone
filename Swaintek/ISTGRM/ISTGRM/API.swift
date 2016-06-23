@@ -60,8 +60,7 @@ class API {
                 NSOperationQueue.mainQueue().addOperationWithBlock({
                     completion(posts: posts)
                 })
-            }
-            completion(posts: nil)
+            } else { completion(posts: nil) }
         }
     }
 }

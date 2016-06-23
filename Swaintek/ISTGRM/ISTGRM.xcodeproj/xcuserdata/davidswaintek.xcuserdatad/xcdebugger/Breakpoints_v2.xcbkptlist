@@ -57,14 +57,46 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "ISTGRM/ImageViewController.swift"
-            timestampString = "488332188.051767"
+            filePath = "ISTGRM/GalleryViewController.swift"
+            timestampString = "488408151.516058"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "27"
-            endingLineNumber = "27"
-            landmarkName = "viewWillAppear()"
+            startingLineNumber = "26"
+            endingLineNumber = "26"
+            landmarkName = "update()"
             landmarkType = "5">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "ISTGRM.GalleryViewController.update () -&gt; ()"
+                  moduleName = "ISTGRM"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/davidswaintek/Week3-Instagram-Clone/Swaintek/ISTGRM/ISTGRM/GalleryViewController.swift"
+                  timestampString = "488408302.431919"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "26"
+                  endingLineNumber = "26"
+                  offsetFromSymbolStart = "248">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "ISTGRM.GalleryViewController.(update () -&gt; ()).(closure #1)"
+                  moduleName = "ISTGRM"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/davidswaintek/Week3-Instagram-Clone/Swaintek/ISTGRM/ISTGRM/GalleryViewController.swift"
+                  timestampString = "488408302.432058"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "27"
+                  endingLineNumber = "27"
+                  offsetFromSymbolStart = "24">
+               </Location>
+            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>

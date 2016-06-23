@@ -22,10 +22,11 @@ class ImageViewController: UIViewController, Setup, UIImagePickerControllerDeleg
         super.viewDidLoad()
         self.setup()
         self.setupAppearance()
+        self.navigationController?.setToolbarHidden(false, animated: false)
     }
     
-    func viewWillAppear() {
-        super.viewWillAppear(true)
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
         self.navigationController?.setToolbarHidden(false, animated: false)
     }
 

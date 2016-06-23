@@ -23,6 +23,11 @@ class ImageViewController: UIViewController, Setup, UIImagePickerControllerDeleg
         self.setup()
         self.setupAppearance()
     }
+    
+    func viewWillAppear() {
+        super.viewWillAppear(true)
+        self.navigationController?.setToolbarHidden(false, animated: false)
+    }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -70,7 +75,6 @@ class ImageViewController: UIViewController, Setup, UIImagePickerControllerDeleg
     
     @IBAction func addButtonSelected(sender: AnyObject)
     {
-        Filters.originalImg = nil
         if UIImagePickerController.isSourceTypeAvailable(.Camera) {
             self.presentActionsSheet()
         } else {
@@ -83,25 +87,25 @@ class ImageViewController: UIViewController, Setup, UIImagePickerControllerDeleg
         
         let actionSheet = UIAlertController(title: "Filter", message: "Please select the filter type", preferredStyle: .ActionSheet)
         let vintageAction = UIAlertAction(title: "Vintage", style: .Default) { (action) in
-            Filters.vintage(image, completion: { (img) in
+            Filters.shared.vintage(image, completion: { (img) in
                 self.imageView.image = img
             })
         }
         
         let comicAction = UIAlertAction(title: "Comic", style: .Default) { (action) in
-            Filters.comic(image, completion: { (img) in
+            Filters.shared.comic(image, completion: { (img) in
                 self.imageView.image = img
             })
         }
         
         let bwAction = UIAlertAction(title: "Black & White", style: .Default) { (action) in
-            Filters.bw(image, completion: { (img) in
+            Filters.shared.bw(image, completion: { (img) in
                 self.imageView.image = img
             })
         }
         
         let chromeAction = UIAlertAction(title: "Chrome", style: .Default) { (action) in
-            Filters.chrome(image, completion: { (img) in
+            Filters.shared.chrome(image, completion: { (img) in
                 self.imageView.image = img
             })
         }

@@ -8,8 +8,14 @@
 
 import UIKit
 
-class ImageViewController: UIViewController, Setup, UIImagePickerControllerDelegate, UINavigationControllerDelegate
+class ImageViewController: UIViewController, Setup, UIImagePickerControllerDelegate, UINavigationControllerDelegate, FiltersPreviewViewControllerDelegate
 {
+    var post = Post()
+    
+    class func id() -> String
+    {
+        return String(self)
+    }
     
     @IBOutlet weak var imageView: UIImageView!
     lazy var imagePicker = UIImagePickerController()
@@ -84,54 +90,21 @@ class ImageViewController: UIViewController, Setup, UIImagePickerControllerDeleg
     }
     
     @IBAction func editButtonSelected(sender: AnyObject) {
+        
         guard let image = self.imageView.image else {return}
         
-        let actionSheet = UIAlertController(title: "Filter", message: "Please select the filter type", preferredStyle: .ActionSheet)
-        let vintageAction = UIAlertAction(title: "Vintage", style: .Default) { (action) in
-            Filters.shared.vintage(image, completion: { (img) in
-                self.imageView.image = img
-            })
-        }
+        self.post = Post(image: image)
         
-        let comicAction = UIAlertAction(title: "Comic", style: .Default) { (action) in
-            Filters.shared.comic(image, completion: { (img) in
-                self.imageView.image = img
-            })
-        }
-        
-        let bwAction = UIAlertAction(title: "Black & White", style: .Default) { (action) in
-            Filters.shared.bw(image, completion: { (img) in
-                self.imageView.image = img
-            })
-        }
-        
-        let chromeAction = UIAlertAction(title: "Chrome", style: .Default) { (action) in
-            Filters.shared.chrome(image, completion: { (img) in
-                self.imageView.image = img
-            })
-        }
-        
-        
-        
-        let cancelAction = UIAlertAction(title: "Cancel", style: .Cancel, handler: nil)
-        
-        actionSheet.addAction(comicAction)
-        actionSheet.addAction(chromeAction)
-        actionSheet.addAction(bwAction)
-        actionSheet.addAction(vintageAction)
-        actionSheet.addAction(cancelAction)
-        
-        presentViewController(actionSheet, animated: true, completion: nil)
-        
+        self.performSegueWithIdentifier(FiltersPreviewViewController.id(), sender: nil)
     }
     
     
     @IBAction func saveButtonSelected(sender: AnyObject) {
         guard let img = self.imageView.image else { return }
-        
+        self.post = Post(image: img)
         UIImageWriteToSavedPhotosAlbum(img, nil, nil, nil)
         
-        API.shared.write(Post(image: img)) { (success) in
+        API.shared.write(self.post) { (success) in
             if success {
                 let alert = UIAlertController(title: "Image saved!", message: nil, preferredStyle: .Alert)
                 let excellent = UIAlertAction(title: "Excellent.", style: .Default, handler: { (action) in
@@ -144,23 +117,56 @@ class ImageViewController: UIViewController, Setup, UIImagePickerControllerDeleg
         
     }
     
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if segue.identifier == FiltersPreviewViewController.id() {
+            guard let filtersPreviewViewController = segue.destinationViewController
+                as? FiltersPreviewViewController else { return }
+            
+            filtersPreviewViewController.delegate = self
+        }
+    }
+    
+    func didFinishPickingImage(success: Bool, image: UIImage?) {
+        if success {
+            guard let image = image else { return }
+            self.imageView.image = image
+        } else {
+            print("Unsuccessful at retrieving image")
+        }
+        self.dismissViewControllerAnimated(true, completion: nil)
+    }
+    
     
     //MARK: UIImagePickerControllerDelegate
     
-    func imagePickerController(picker: UIImagePickerController, didFinishPickingImage image: UIImage, editingInfo: [String :AnyObject]?)
-    {
-        self.imageView.image = image
-        self.editButton.enabled = true
-        self.saveButton.enabled = true
+//    func imagePickerController(picker: UIImagePickerController, didFinishPickingImage image: UIImage, editingInfo: [String :AnyObject]?)
+//    {
+//        self.imageView.image = image
+//        self.editButton.enabled = true
+//        self.saveButton.enabled = true
+//        self.dismissViewControllerAnimated(true, completion: nil)
+//    }
+//    
+//    func imagePickerControllerDidCancel(picker: UIImagePickerController)
+//    {
+//        self.dismissViewControllerAnimated(true, completion: nil)
+//    }
+    
+    
+
+
+}
+
+extension ImageViewController {
+    func imagePickerControllerDidCancel(picker: UIImagePickerController) {
         self.dismissViewControllerAnimated(true, completion: nil)
     }
     
-    func imagePickerControllerDidCancel(picker: UIImagePickerController)
-    {
+    func imagePickerController(picker: UIImagePickerController, didFinishPickingImage image: UIImage, editingInfo: [String : AnyObject]?) {
+        self.imageView.image = image // passed in as param of delegate function
+        Filters.shared.originalImg = image // image reset to original non filtered pix
         self.dismissViewControllerAnimated(true, completion: nil)
     }
-
-
 }
 
 

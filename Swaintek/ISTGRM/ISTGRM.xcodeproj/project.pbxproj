@@ -14,6 +14,8 @@
 		85AEDC821D1B4110005ACF9F /* GalleryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85AEDC811D1B4110005ACF9F /* GalleryViewController.swift */; };
 		85AEDC861D1B4471005ACF9F /* GalleryCustomFlowLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85AEDC851D1B4471005ACF9F /* GalleryCustomFlowLayout.swift */; };
 		85AEDC881D1B4895005ACF9F /* ImageCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85AEDC871D1B4895005ACF9F /* ImageCollectionViewCell.swift */; };
+		85AEDC8A1D1C9C9B005ACF9F /* FiltersPreviewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85AEDC891D1C9C9A005ACF9F /* FiltersPreviewViewController.swift */; };
+		85AEDC8C1D1CA0A2005ACF9F /* FiltersPreviewControllerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85AEDC8B1D1CA0A2005ACF9F /* FiltersPreviewControllerDelegate.swift */; };
 		C9A1BAB61D1A3CF5008FDB50 /* CloudKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C9A1BAB51D1A3CF5008FDB50 /* CloudKit.framework */; };
 		C9A1BAB81D1A3E58008FDB50 /* Post.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9A1BAB71D1A3E58008FDB50 /* Post.swift */; };
 		C9A1BABB1D1A3FC8008FDB50 /* Additions.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9A1BABA1D1A3FC8008FDB50 /* Additions.swift */; };
@@ -33,6 +35,8 @@
 		85AEDC811D1B4110005ACF9F /* GalleryViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GalleryViewController.swift; sourceTree = "<group>"; };
 		85AEDC851D1B4471005ACF9F /* GalleryCustomFlowLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = GalleryCustomFlowLayout.swift; path = ../GalleryCustomFlowLayout.swift; sourceTree = "<group>"; };
 		85AEDC871D1B4895005ACF9F /* ImageCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageCollectionViewCell.swift; sourceTree = "<group>"; };
+		85AEDC891D1C9C9A005ACF9F /* FiltersPreviewViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FiltersPreviewViewController.swift; sourceTree = "<group>"; };
+		85AEDC8B1D1CA0A2005ACF9F /* FiltersPreviewControllerDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FiltersPreviewControllerDelegate.swift; sourceTree = "<group>"; };
 		C9A1BAB41D1A3C67008FDB50 /* ISTGRM.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = ISTGRM.entitlements; sourceTree = "<group>"; };
 		C9A1BAB51D1A3CF5008FDB50 /* CloudKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CloudKit.framework; path = System/Library/Frameworks/CloudKit.framework; sourceTree = SDKROOT; };
 		C9A1BAB71D1A3E58008FDB50 /* Post.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Post.swift; sourceTree = "<group>"; };
@@ -79,6 +83,7 @@
 				C9A1BABC1D1A3FE5008FDB50 /* App Global */,
 				C9A1BAB41D1A3C67008FDB50 /* ISTGRM.entitlements */,
 				85618B0F1D186A3C00946355 /* AppDelegate.swift */,
+				85AEDC8B1D1CA0A2005ACF9F /* FiltersPreviewControllerDelegate.swift */,
 				85618B1B1D186A3D00946355 /* Info.plist */,
 				85618B221D186A8400946355 /* Controller */,
 				C9A1BAB91D1A3E61008FDB50 /* Model */,
@@ -99,6 +104,7 @@
 		85618B221D186A8400946355 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				85AEDC891D1C9C9A005ACF9F /* FiltersPreviewViewController.swift */,
 				85AEDC811D1B4110005ACF9F /* GalleryViewController.swift */,
 				85618B111D186A3C00946355 /* ImageViewController.swift */,
 			);
@@ -217,6 +223,8 @@
 				85AEDC861D1B4471005ACF9F /* GalleryCustomFlowLayout.swift in Sources */,
 				C9A1BAC01D1A473A008FDB50 /* Filters.swift in Sources */,
 				85618B121D186A3C00946355 /* ImageViewController.swift in Sources */,
+				85AEDC8A1D1C9C9B005ACF9F /* FiltersPreviewViewController.swift in Sources */,
+				85AEDC8C1D1CA0A2005ACF9F /* FiltersPreviewControllerDelegate.swift in Sources */,
 				85618B101D186A3C00946355 /* AppDelegate.swift in Sources */,
 				85AEDC821D1B4110005ACF9F /* GalleryViewController.swift in Sources */,
 				C9A1BAC21D1A5336008FDB50 /* API.swift in Sources */,

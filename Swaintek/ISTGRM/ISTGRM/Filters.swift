@@ -14,7 +14,7 @@ class Filters {
 
     static let shared = Filters()
     
-    static var originalImg = UIImage()
+    var originalImg = UIImage()
     
     private let context: CIContext
     
@@ -44,6 +44,10 @@ class Filters {
                 completion(theImage: UIImage(CGImage: cgImage))
             })
         })
+    }
+    
+    func original (image: UIImage, completion: FiltersCompletion){
+        completion(theImage: self.originalImg)
     }
     
     func vintage(image: UIImage, completion: FiltersCompletion){

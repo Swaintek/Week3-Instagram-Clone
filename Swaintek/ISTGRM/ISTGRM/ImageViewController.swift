@@ -44,9 +44,6 @@ class ImageViewController: UIViewController, Setup, UIImagePickerControllerDeleg
     func setup()
     {
         self.navigationItem.title = "Dave's Picture Factory"
-
-        self.editButton.enabled = (self.imageView.image != nil)
-        self.saveButton.enabled = (self.imageView.image != nil)
     }
     
     func setupAppearance()
@@ -95,7 +92,7 @@ class ImageViewController: UIViewController, Setup, UIImagePickerControllerDeleg
         
         self.post = Post(image: image)
         
-        self.performSegueWithIdentifier(FiltersPreviewViewController.id(), sender: nil)
+        self.performSegueWithIdentifier(FiltersPreviewViewController.id(), sender: self.post)
     }
     
     
@@ -123,6 +120,7 @@ class ImageViewController: UIViewController, Setup, UIImagePickerControllerDeleg
                 as? FiltersPreviewViewController else { return }
             
             filtersPreviewViewController.delegate = self
+            filtersPreviewViewController.post = sender as! Post
         }
     }
     

@@ -58,14 +58,10 @@ class Filters {
         self.filter("CIComicEffect", image: image, completion: completion)
     }
     
-    func pixelate(image: UIImage, completion: FiltersCompletion) {
-        self.filter("CIHexagonalPixelate", image: image, completion: completion)
+    func pixellate(image: UIImage, completion: FiltersCompletion) {
+        self.filter("CIHexagonalPixellate", image: image, completion: completion)
     }
-    
-    func sketch(image: UIImage, completion: FiltersCompletion) {
-        self.filter("CILineOverlay", image: image, completion: completion)
-    }
-    
+
     func bw(image: UIImage, completion: FiltersCompletion){
         self.filter("CIPhotoEffectMono", image: image, completion: completion)
     }

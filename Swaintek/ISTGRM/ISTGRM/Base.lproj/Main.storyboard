@@ -60,7 +60,7 @@
                         <outlet property="editButton" destination="9bR-X4-leb" id="hPZ-Uo-s4q"/>
                         <outlet property="imageView" destination="ETN-UQ-tBi" id="7iT-gT-omX"/>
                         <outlet property="saveButton" destination="jzp-eh-GNR" id="4Rx-8I-6Kc"/>
-                        <segue destination="I3r-Z6-vqu" kind="presentation" identifier="FiltersPreviewView" id="ixH-iU-kTX"/>
+                        <segue destination="I3r-Z6-vqu" kind="presentation" identifier="FiltersPreviewViewController" id="ixH-iU-kTX"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -88,7 +88,7 @@
                                     <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 </collectionViewFlowLayout>
                                 <cells>
-                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="ABB-df-WAB" customClass="ImageCollectionViewCell" customModule="ISTGRM" customModuleProvider="target">
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="ImageCollectionViewCell" id="ABB-df-WAB" customClass="ImageCollectionViewCell" customModule="ISTGRM" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="0.0" width="189" height="198"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
